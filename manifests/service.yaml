@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    app.openshift.io/vcs-ref: main
+    app.openshift.io/vcs-uri: https://github.com/gnunn1/simple-httpd
+  labels:
+    app: practice-test
+    app.kubernetes.io/component: practice-test
+    app.kubernetes.io/instance: practice-test
+    app.kubernetes.io/name: practice-test
+    app.kubernetes.io/part-of: practice-test-app
+  name: practice-test
+spec:
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: 8080-tcp
+    port: 8080
+  selector:
+    app: practice-test
